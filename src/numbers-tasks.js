@@ -51,11 +51,7 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  if (!Number.isFinite(value1) || !Number.isFinite(value2)) {
-    throw new Error('LargeNumber');
-  }
-  const sum = value1 + value2;
-  return sum / 2;
+  return value1 / 2 + value2 / 2;
 }
 
 /**
@@ -616,8 +612,11 @@ function getSumOfNumbers(x1, x2, x3) {
  * -5, -6 => -5
  * 0, 5   => 5
  */
-function getMaxNumber(/* firstNumber, secondNumber */) {
-  throw new Error('Not implemented');
+function getMaxNumber(firstNumber, secondNumber) {
+  if (firstNumber !== secondNumber) {
+    return firstNumber > secondNumber ? firstNumber : secondNumber;
+  }
+  return null;
 }
 
 /**
@@ -632,8 +631,8 @@ function getMaxNumber(/* firstNumber, secondNumber */) {
  * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
  * -1, 1 => -1 | 0 | 1
  */
-function getRandomInteger(/* min, max */) {
-  throw new Error('Not implemented');
+function getRandomInteger(min, max) {
+  return Math.random() * (max - min) + min;
 }
 
 /**
@@ -646,8 +645,8 @@ function getRandomInteger(/* min, max */) {
  * @example:
  * 3, 4 => 5
  */
-function getHypotenuse(/* a, b */) {
-  throw new Error('Not implemented');
+function getHypotenuse(a, b) {
+  return Math.sqrt(a * a + b * b);
 }
 
 /**
@@ -663,8 +662,12 @@ function getHypotenuse(/* a, b */) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
+function getCountOfOddNumbers(number) {
+  let count = 0;
+  for (let i = 1; i <= number; i += 2) {
+    count += 1;
+  }
+  return count;
 }
 
 module.exports = {
