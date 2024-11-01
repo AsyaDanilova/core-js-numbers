@@ -645,14 +645,7 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  if (Number.isFinite(a) && Number.isFinite(b)) {
-    const maxValue = Math.sqrt(Number.MAX_VALUE);
-    if (Math.abs(a) > maxValue || Math.abs(b) > maxValue) {
-      return Infinity;
-    }
-    return null;
-  }
-  return Math.sqrt(a * a + b * b);
+  return Math.hypot(a, b);
 }
 
 /**
@@ -670,7 +663,12 @@ function getHypotenuse(a, b) {
  */
 function getCountOfOddNumbers(number) {
   let count = 0;
-  for (let i = 0; i <= number; i += 1) {
+  if (number > 0) {
+    for (let i = 1; i <= number; i += 2) {
+      count += 1;
+    }
+  }
+  for (let i = -1; i >= number; i -= 2) {
     count += 1;
   }
   return count;
